@@ -2,7 +2,7 @@ import React from 'react'
 import {navIcons, navLinks} from "#constants/index.js";
 import dayjs from "dayjs";
 
-const Navbar = () => {
+export const Navbar = () => {
     return (
         <nav>
             <div>
@@ -15,8 +15,6 @@ const Navbar = () => {
                         ))
                     }
                 </ul>
-
-
             </div>
             <div>
                 <ul>
@@ -33,4 +31,3 @@ const Navbar = () => {
         </nav>
     )
 }
-export default Navbar
