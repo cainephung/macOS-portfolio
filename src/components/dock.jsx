@@ -52,7 +52,7 @@ export const Dock = () => {
             dock.removeEventListener("mouseLeave", resetIcons)
         }
     }, [])
-    
+
     const toggleApp = (app) => {
         if (!app.canOpen) return;
         const window = windows[app.id];
