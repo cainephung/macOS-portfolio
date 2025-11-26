@@ -31,6 +31,8 @@ body {
     @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
 }
 
+/* ---------------- BASE ---------------- */
+
 @layer base {
     main {
         @apply w-dvw h-dvh overflow-hidden;
@@ -60,6 +62,8 @@ body {
         }
     }
 }
+
+/* ---------------- COMPONENTS ---------------- */
 
 @layer components {
     .icon {
@@ -114,11 +118,10 @@ body {
         }
 
         .disabled {
-            @apply opacity-60 cursor-default pointer-events-none;
-            filter: saturate(20%);
+            @apply opacity-50 cursor-default pointer-events-none;
+            filter: saturate(50%);
         }
     }
-
 
     #window-header {
         @apply flex items-center justify-between px-4 py-3 rounded-t-lg bg-gray-50 border-b border-gray-200 select-none text-sm text-gray-400;
@@ -400,3 +403,61 @@ body {
         }
     }
 }
+
+/* ---------------- DARK MODE OVERRIDES ---------------- */
+/* (Only theme stuff, no layout changes) */
+
+.dark nav {
+    @apply bg-black/40;
+}
+
+.dark nav ul p {
+    @apply text-gray-200;
+}
+
+.dark nav p {
+    @apply text-gray-200;
+}
+
+.dark nav time {
+    @apply text-gray-100;
+}
+
+.dark nav img {
+    filter: brightness(0) invert(1);
+}
+
+.dark #dock .dock-container {
+    @apply bg-black/40;
+}
+
+.dark #window-header {
+    @apply bg-[#1f2124] border-gray-700 text-gray-200;
+}
+
+.dark #finder .sidebar {
+    @apply bg-[#1f2124] border-gray-700;
+}
+
+.dark #finder .sidebar h3 {
+    @apply text-gray-300;
+}
+
+.dark #finder .sidebar .not-active {
+    @apply text-gray-300 hover:bg-gray-700;
+}
+
+.dark #finder .content {
+    @apply bg-[#121212];
+}
+
+/* Finder content (right side grid) */
+.dark #finder .content {
+    @apply bg-[#1f1f1f];
+}
+
+.dark #finder .content p {
+    @apply text-gray-200;
+}
+
+
