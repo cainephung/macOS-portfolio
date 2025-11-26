@@ -31,9 +31,17 @@ export const Dock = () => {
         };
 
         const handleMouseMove = (e) => {
-            const {left} = dock.getBoundingClientRect();
-            animateIcons(e.clientX - left);
+            const dockRect = dock.getBoundingClientRect();
+
+            // If the mouse is above the dock → reset icons
+            if (e.clientY < dockRect.top) {
+                resetIcons();
+                return;
+            }
+
+            animateIcons(e.clientX - dockRect.left);
         };
+
 
         const resetIcons = () => {
             icons.forEach((icon) => {

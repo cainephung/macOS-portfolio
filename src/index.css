@@ -7,7 +7,7 @@ body {
     width: 100dvw;
     overflow: hidden;
     height: 100dvh;
-    background-image: url("/images/wallpaper.png");
+    background-image: url("../public/images/wallpaper.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -112,7 +112,13 @@ body {
         .maximize {
             @apply size-3.5 rounded-full bg-[#2acb42];
         }
+
+        .disabled {
+            @apply opacity-60 cursor-default pointer-events-none;
+            filter: saturate(20%);
+        }
     }
+
 
     #window-header {
         @apply flex items-center justify-between px-4 py-3 rounded-t-lg bg-gray-50 border-b border-gray-200 select-none text-sm text-gray-400;
