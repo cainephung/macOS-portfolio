@@ -5,7 +5,8 @@ import {locations} from "#constants/index.js";
 const DEFAULT_LOCATIONS = locations.work;
 export const useLocationStore = create(immer((set) => ({
     activeLocation: DEFAULT_LOCATIONS,
-    setActiveLocation: (location = null) => set((state) => {
+    setActiveLocation: (location) => set((state) => {
+        if (location === undefined) return;
         state.activeLocation = location;
     }),
     resetActiveLocation: () => set((state) => {

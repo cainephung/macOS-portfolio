@@ -1,6 +1,7 @@
 import {create} from "zustand/react";
 import {immer} from "zustand/middleware/immer";
 import {INITIAL_Z_INDEX, WINDOW_CONFIG} from "#constants/index.js";
+import {useLocationStore} from "#store/location.js";
 
 export const useWindowStore = create(
     immer((set) => ({
@@ -25,22 +26,34 @@ export const useWindowStore = create(
                 win.isMaximized = false;
                 win.zIndex = INITIAL_Z_INDEX;
                 win.data = null;
+
+                if (windowKey === "finder") {
+                    queueMicrotask(() => {
+                        useLocationStore.getState().resetActiveLocation();
+                    });
+                }
             }),
 
-        minimizeWindow: (windowKey) =>
-            set((state) => {
-                const win = state.windows[windowKey];
-                win.isMinimized = true;
-                win.isMaximized = false;
-            }),
-
-        maximizeWindow: (windowKey) =>
-            set((state) => {
-                const win = state.windows[windowKey];
-                win.isMaximized = !win.isMaximized; // toggle
-                win.isMinimized = false;
-                win.zIndex = state.nextZIndex++;
-            }),
+        // minimizeWindow: (windowKey) =>
+        //     set((state) => {
+        //         const win = state.windows[windowKey];
+        //         win.isMinimized = true;
+        //         win.isMaximized = false;
+        //     }),
+        //
+        // maximizeWindow: (windowKey) =>
+        //     set((state) => {
+        //         const win = state.windows[windowKey];
+        //         win.isMaximized = !win.isMaximized;
+        //         win.isMinimized = false;
+        //         win.zIndex = state.nextZIndex++;
+        //
+        //         // Tell wrapper to reset transform to (0,0)
+        //         win.data = {
+        //             ...win.data,
+        //             resetPosition: true,
+        //         };
+        //     }),
 
         focusWindow: (windowKey) =>
             set((state) => {
