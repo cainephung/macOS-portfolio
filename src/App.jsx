@@ -1,39 +1,36 @@
-import React, {useEffect} from 'react';
-import {Dock, Home, Navbar, Welcome} from "#components";
-import {Draggable} from "gsap/Draggable";
+import React, { useEffect } from "react";
+import { Dock, Home, Navbar, Welcome } from "#components";
+import { Draggable } from "gsap/Draggable";
 import gsap from "gsap";
-import {Contact, Image, Resume, Safari, Terminal, Text} from "#windows";
+import { Contact, Image, Resume, Safari, Terminal, Text } from "#windows";
 import Finder from "#windows/finder.jsx";
-import {useThemeStore} from "#store/theme.js";
+import { useThemeStore } from "#store/theme.js";
 
 gsap.registerPlugin(Draggable);
 
 const App = () => {
-    const {theme} = useThemeStore();
+  const { theme } = useThemeStore();
 
-    useEffect(() => {
-        const root = document.documentElement;
+  useEffect(() => {
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(theme);
+  }, [theme]);
 
-        if (theme === "dark") root.classList.add("dark");
-        else root.classList.remove("dark");
-
-    }, [theme]);
-
-    return (
-        <main>
-            <Navbar/>
-            <Welcome/>
-            <Dock/>
-            <Terminal/>
-            <Safari/>
-            <Resume/>
-            <Finder/>
-            <Text/>
-            <Image/>
-            <Contact/>
-            <Home/>
-        </main>
-    );
+  return (
+    <main>
+      <Navbar />
+      <Welcome />
+      <Dock />
+      <Terminal />
+      <Safari />
+      <Resume />
+      <Finder />
+      <Text />
+      <Image />
+      <Contact />
+      <Home />
+    </main>
+  );
 };
 
 export default App;

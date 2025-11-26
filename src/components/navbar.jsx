@@ -1,62 +1,69 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
-import {navIcons, navLinks} from "#constants/index.js";
-import {useWindowStore} from "#store/window.js";
+import { navIcons, navLinks } from "#constants/index.js";
+import { useWindowStore } from "#store/window.js";
 
 export const Navbar = () => {
-    const [time, setTime] = useState(dayjs());
-    const [isDark, setIsDark] = useState(false);
-    const {openWindow} = useWindowStore();
+  const { openWindow } = useWindowStore();
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setTime(dayjs());
-        }, 1000);
-        return () => clearInterval(interval);
-    }, []);
+  const [time, setTime] = useState(dayjs());
 
-    useEffect(() => {
-        const root = document.documentElement; // <html>
-        if (isDark) {
-            root.classList.add("dark");
-        } else {
-            root.classList.remove("dark");
-        }
-    }, [isDark]);
+  // Load theme from localStorage
+  const [isDark, setIsDark] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
 
-    const handleIconClick = (action) => {
-        if (action === "toggle-theme") {
-            setIsDark((prev) => !prev);
-            console.log("dark?", !isDark);
+  // Clock updater
+  useEffect(() => {
+    const interval = setInterval(() => setTime(dayjs()), 1000);
+    return () => clearInterval(interval);
+  }, []);
 
-        }
-    };
+  // Apply theme to <html> AND save to storage
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isDark) {
+      root.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [isDark]);
 
-    return (
-        <nav>
-            <div>
-                <img src="/images/logo.svg" alt="logo"/>
-                <p className="font-bold">Caine's Portfolio</p>
-                <ul>
-                    {navLinks.map(({id, name, type}) => (
-                        <li key={id} onClick={() => openWindow(type)}>
-                            <p>{name}</p>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+  const handleIconClick = (action) => {
+    if (action === "toggle-theme") {
+      setIsDark((prev) => !prev);
+      console.log("dark?", !isDark);
+    }
+  };
 
-            <div>
-                <ul>
-                    {navIcons.map(({id, img, action}) => (
-                        <li key={id} onClick={() => handleIconClick(action)}>
-                            <img src={img} className="icon-hover" alt={`icon-${id}`}/>
-                        </li>
-                    ))}
-                </ul>
+  return (
+    <nav>
+      <div>
+        <img src="/images/logo.svg" alt="logo" />
+        <p className="font-bold">Caine's Portfolio</p>
 
-                <time>{time.format("ddd MMM D h:mm A")}</time>
-            </div>
-        </nav>
-    );
+        <ul>
+          {navLinks.map(({ id, name, type }) => (
+            <li key={id} onClick={() => openWindow(type)}>
+              <p>{name}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <ul>
+          {navIcons.map(({ id, img, action }) => (
+            <li key={id} onClick={() => handleIconClick(action)}>
+              <img src={img} className="icon-hover" alt={`icon-${id}`} />
+            </li>
+          ))}
+        </ul>
+
+        <time>{time.format("ddd MMM D h:mm A")}</time>
+      </div>
+    </nav>
+  );
 };
