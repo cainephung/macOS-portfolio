@@ -603,3 +603,116 @@ html {
 .dark #contact ul li a p {
   @apply text-gray-100;
 }
+@layer utilities {
+  @media (max-width: 640px) {
+    #dock {
+      display: flex !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+  }
+}
+@layer utilities {
+  /* ------------------ EXTRA LARGE (≥1536px) ------------------ */
+  @media (min-width: 1536px) {
+    #finder,
+    #safari,
+    #terminal,
+    #contact,
+    #resume,
+    #txtfile,
+    #imgfile,
+    #photos {
+      width: 56rem !important; /* ~4xl */
+      left: 20% !important;
+      top: 10% !important;
+      transform: none !important;
+    }
+  }
+
+  /* ------------------ LARGE DESKTOP (≥1280px) ------------------ */
+  @media (min-width: 1280px) and (max-width: 1535px) {
+    #finder,
+    #safari,
+    #terminal,
+    #contact,
+    #resume,
+    #txtfile,
+    #imgfile,
+    #photos {
+      width: 48rem !important; /* ~3xl */
+      left: 15% !important;
+      top: 12% !important;
+      transform: none !important;
+    }
+  }
+
+  /* ------------------ DESKTOP (≥1024px) ------------------ */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    #finder,
+    #safari,
+    #terminal,
+    #contact,
+    #resume,
+    #txtfile,
+    #imgfile,
+    #photos {
+      width: 36rem !important; /* ~xl */
+      left: 10% !important;
+      top: 12% !important;
+      transform: none !important;
+    }
+  }
+
+  /* ------------------ TABLETS (≥768px) ------------------ */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    #finder,
+    #safari,
+    #terminal,
+    #contact,
+    #resume,
+    #txtfile,
+    #imgfile,
+    #photos {
+      width: 90% !important;
+      left: 50% !important;
+      top: 10% !important;
+      transform: translateX(-50%) !important;
+    }
+  }
+
+  /* ------------------ PHONES (≤640px) ------------------ */
+  @media (max-width: 640px) {
+    #finder,
+    #safari,
+    #terminal,
+    #contact,
+    #resume,
+    #txtfile,
+    #imgfile,
+    #photos {
+      width: 95% !important;
+      left: 50% !important;
+      top: 12% !important;
+      transform: translateX(-50%) !important;
+      border-radius: 0.75rem !important;
+    }
+  }
+
+  /* ------------------ SMALL PHONES (≤400px) ------------------ */
+  @media (max-width: 400px) {
+    #finder,
+    #safari,
+    #terminal,
+    #contact,
+    #resume,
+    #txtfile,
+    #imgfile,
+    #photos {
+      width: 98% !important;
+      left: 50% !important;
+      top: 8% !important;
+      transform: translateX(-50%) !important;
+    }
+  }
+}
