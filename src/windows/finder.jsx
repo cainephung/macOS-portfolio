@@ -42,7 +42,7 @@ const Finder = () => {
     <>
       <div id="window-header">
         <WindowControls target="finder" />
-        {/* <Search className="icon"/> */}
+        <Search className="icon" />
       </div>
       <div className="bg-white flex h-full">
         <div className="sidebar">
