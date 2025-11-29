@@ -1,4 +1,4 @@
-export * from "./Navbar";
+export * from "./Navbar.jsx";
 export * from "./welcome.jsx";
 export * from "./dock.jsx";
 export * from "./WindowControls.jsx";
