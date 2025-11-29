@@ -231,54 +231,45 @@ const WORK_LOCATION = {
         // ▶ Project 1
         {
             id: 5,
-            name: "Nike Ecommerce Website Application",
+            name: "E-Commerce Website",
             icon: "/images/folder.png",
             kind: "folder",
-            position: "top-10 left-5", // icon position inside Finder
+            position: "top-10 left-7", // icon position inside Finder
             windowPosition: "top-[5vh] left-5", // optional: Finder window position
             children: [
                 {
                     id: 1,
-                    name: "Nike Project.txt",
+                    name: "E-Commerce Project.txt",
                     icon: "/images/txt.png",
                     kind: "file",
                     fileType: "txt",
                     position: "top-5 left-10",
                     description: [
-                        "The Nike eCommerce website is a sleek and modern platform designed for shopping the latest Nike collections.",
-                        "Instead of a simple online store, it delivers an immersive experience with bold visuals, interactive product displays, and smooth navigation.",
-                        "Think of it like walking into a flagship Nike store—but right from your phone or laptop.",
-                        "It's built with Next.js and Tailwind, ensuring fast performance, responsive design, and a clean, premium look.",
-                    ],
+                        "An e-commerce website built with Next.js, Sanity CMS, and TailwindCSS.",
+                        "Products are managed through Sanity, and the UI is built with reusable components and a responsive layout.",
+                        "The project includes a working shopping cart and checkout flow, along with connected API routes and data handling.",
+                        "It was a good end-to-end build for practicing full-stack structure, CMS integration, and frontend organization."
+                    ]
                 },
                 {
                     id: 2,
-                    name: "nike.com",
+                    name: "demo-link",
                     icon: "/images/safari.png",
                     kind: "file",
                     fileType: "url",
-                    href: "https://youtu.be/fZdTYswuZjU?si=Awjl-pIst9e09_UU",
-                    position: "top-10 right-20",
+                    href: "https://caineshop.vercel.app",
+                    position: "top-10 right-20"
                 },
                 {
                     id: 4,
-                    name: "nike.png",
+                    name: "ecommerce.png",
                     icon: "/images/image.png",
                     kind: "file",
                     fileType: "img",
                     position: "top-52 right-80",
-                    imageUrl: "/images/project-1.png",
-                },
-                // {
-                //     id: 5,
-                //     name: "Design.fig",
-                //     icon: "/images/plain.png",
-                //     kind: "file",
-                //     fileType: "fig",
-                //     href: "https://google.com",
-                //     position: "top-60 right-20",
-                // },
-            ],
+                    imageUrl: "/images/project-1.png"
+                }
+            ]
         },
 
         // ▶ Project 2
@@ -292,26 +283,26 @@ const WORK_LOCATION = {
             children: [
                 {
                     id: 1,
-                    name: "AI Resume Analyzer Project.txt",
+                    name: "AI Resume Analyzer.txt",
                     icon: "/images/txt.png",
                     kind: "file",
                     fileType: "txt",
                     position: "top-5 right-10",
                     description: [
-                        "AI Resume Analyzer is a smart tool that helps you perfect your resume with instant feedback.",
-                        "Instead of guessing what recruiters want, you get AI-powered insights on keywords, formatting, and overall impact.",
-                        "Think of it like having a career coach—pointing out strengths, fixing weaknesses, and boosting your chances of landing interviews.",
-                        "It's built with Next.js and Tailwind, so it runs fast, looks professional, and works seamlessly on any device.",
-                    ],
+                        "A resume analysis tool built with Next.js and TailwindCSS.",
+                        "It processes text input and provides feedback using local scoring logic without relying on external APIs.",
+                        "The main focus was handling user input cleanly, running evaluations, and presenting results in a clear UI.",
+                        "The project helped me improve how I structure data flow, form handling, and small-scale logic inside a frontend tool."
+                    ]
                 },
                 {
                     id: 2,
-                    name: "ai-resume-analyzer.com",
+                    name: "demo-video",
                     icon: "/images/safari.png",
                     kind: "file",
                     fileType: "url",
                     href: "https://youtu.be/iYOz165wGkQ?si=R1hs8Legl200m0Cl",
-                    position: "top-20 left-20",
+                    position: "top-20 left-20"
                 },
                 {
                     id: 4,
@@ -320,24 +311,15 @@ const WORK_LOCATION = {
                     kind: "file",
                     fileType: "img",
                     position: "top-52 left-80",
-                    imageUrl: "/images/project-2.png",
-                },
-                {
-                    id: 5,
-                    name: "Design.fig",
-                    icon: "/images/plain.png",
-                    kind: "file",
-                    fileType: "fig",
-                    href: "https://google.com",
-                    position: "top-60 left-5",
-                },
-            ],
+                    imageUrl: "/images/project-2.png"
+                }
+            ]
         },
 
         // ▶ Project 3
         {
             id: 7,
-            name: "Food Delivery App",
+            name: "ASL Sign Language",
             icon: "/images/folder.png",
             kind: "folder",
             position: "top-10 left-80",
@@ -345,49 +327,31 @@ const WORK_LOCATION = {
             children: [
                 {
                     id: 1,
-                    name: "Food Delivery App Project.txt",
+                    name: "ASL App.txt",
                     icon: "/images/txt.png",
                     kind: "file",
                     fileType: "txt",
                     position: "top-5 left-10",
                     description: [
-                        "Our Food Delivery App is a fast and convenient way to order meals from your favorite restaurants.",
-                        "Instead of making calls or waiting in line, you can browse menus, customize orders, and track deliveries in real time.",
-                        "Think of it like having your favorite restaurants in your pocket—ready to deliver anytime, anywhere.",
-                        "It’s built with React Native, so it works smoothly on both iOS and Android with a clean, modern design.",
-                    ],
-                },
-                {
-                    id: 2,
-                    name: "food-delivery-app.com",
-                    icon: "/images/safari.png",
-                    kind: "file",
-                    fileType: "url",
-                    href: "https://youtu.be/LKrX390fJMw?si=cExkuVhf2DTV9G2-",
-                    position: "top-10 right-20",
+                        "A real-time ASL recognition app built with Python, MediaPipe, PyTorch, and OpenCV.",
+                        "It tracks hand landmarks through the webcam and predicts letters A–Z, including motion-based gestures like J and Z.",
+                        "The model uses an LSTM-based approach for sequence gestures, with preprocessing to improve accuracy and stability.",
+                        "This project strengthened my understanding of computer vision, model training, and building interactive ML applications."
+                    ]
                 },
                 {
                     id: 4,
-                    name: "food-delivery-app.png",
+                    name: "asl-app.png",
                     icon: "/images/image.png",
                     kind: "file",
                     fileType: "img",
                     position: "top-52 right-80",
-                    imageUrl: "/images/project-3.png",
-                },
-                {
-                    id: 5,
-                    name: "Design.fig",
-                    icon: "/images/plain.png",
-                    kind: "file",
-                    fileType: "fig",
-                    href: "https://google.com",
-                    position: "top-60 right-20",
-                },
-            ],
-        },
-    ],
-};
+                    imageUrl: "/images/project-3.png"
+                }
+            ]
+        }
+    ]
+}
 
 const ABOUT_LOCATION = {
     id: 2,
@@ -398,47 +362,47 @@ const ABOUT_LOCATION = {
     children: [
         {
             id: 1,
-            name: "me.png",
+            name: "me.jpg",
             icon: "/images/image.png",
             kind: "file",
             fileType: "img",
             position: "top-10 left-5",
-            imageUrl: "/images/adrian.jpg",
+            imageUrl: "/images/me.jpg",
         },
         {
             id: 2,
-            name: "casual-me.png",
+            name: "casual-me.jpg",
             icon: "/images/image.png",
             kind: "file",
             fileType: "img",
             position: "top-28 right-72",
-            imageUrl: "/images/adrian-2.jpg",
+            imageUrl: "/images/casual-me.jpg",
         },
+
         {
             id: 3,
-            name: "conference-me.png",
-            icon: "/images/image.png",
-            kind: "file",
-            fileType: "img",
-            position: "top-52 left-80",
-            imageUrl: "/images/adrian-3.jpeg",
-        },
-        {
-            id: 4,
             name: "about-me.txt",
             icon: "/images/txt.png",
             kind: "file",
             fileType: "txt",
             position: "top-60 left-5",
-            subtitle: "Meet the Developer Behind the Code",
-            image: "/images/adrian.jpg",
+            subtitle: "A little bit about me",
+            image: "/images/me.jpg",
             description: [
-                "Hey! I’m Adrian 👋, a web developer who enjoys building sleek, interactive websites that actually work well.",
-                "I specialize in JavaScript, React, and Next.js—and I love making things feel smooth, fast, and just a little bit delightful.",
-                "I’m big on clean UI, good UX, and writing code that doesn’t need a search party to debug.",
-                "Outside of dev work, you'll find me tweaking layouts at 2AM, sipping overpriced coffee, or impulse-buying gadgets I absolutely convinced myself I needed 😅",
-            ],
-        },
+                "Hi, I’m Caine. I’m a developer who likes building things that make sense and are easy to use. I prefer simple layouts, clean code, and features that actually feel useful instead of flashy.",
+
+                "Most of my experience comes from working with JavaScript, React, Node, and a bit of backend and database work. I enjoy understanding how things fit together across the stack, not just how to build the UI part.",
+
+                "Lately I’ve been spending more time learning about cloud, networking, and how applications run behind the scenes. It helps me understand the bigger picture instead of only focusing on the front-facing parts.",
+
+                "A lot of my learning comes from small projects I build for myself. If something seems interesting or I want to understand how it works, I usually try to make a simple version of it. That’s where I learn the most.",
+
+                "Outside of coding, I’m usually adjusting my setup, reading documentation, or testing out tools just to see what they can do. Nothing extreme — just small things that help me get better over time.",
+
+                "Right now, I’m focused on improving my full-stack skills and building a portfolio that shows what I can actually do, not just list out technologies. I like steady progress and learning at my own pace."
+            ]
+        }
+
     ],
 };
 
