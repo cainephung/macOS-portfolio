@@ -43,11 +43,11 @@ const Terminal = () => {
 
                 <div className="footnote">
                     <p>
-                        <Check size={20}/> Loaded 6 of 6 successfully (100%)
+                        <Check size={20}/> Loaded 7 of 7 successfully (100%)
                     </p>
                     <p className="text-black">
                         <Flag size={15} fill="black"/>
-                        Render time: 6ms
+                        Render time: 7ms
                     </p>
                 </div>
             </div>

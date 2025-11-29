@@ -228,14 +228,14 @@ const WORK_LOCATION = {
     icon: "/icons/work.svg",
     kind: "folder",
     children: [
-        // ▶ Project 1
+        // ▶ Project 1 — E-Commerce
         {
             id: 5,
             name: "E-Commerce Website",
             icon: "/images/folder.png",
             kind: "folder",
-            position: "top-10 left-7", // icon position inside Finder
-            windowPosition: "top-[5vh] left-5", // optional: Finder window position
+            position: "top-10 left-7",
+            windowPosition: "top-[5vh] left-5",
             children: [
                 {
                     id: 1,
@@ -245,10 +245,10 @@ const WORK_LOCATION = {
                     fileType: "txt",
                     position: "top-5 left-10",
                     description: [
-                        "An e-commerce website built with Next.js, Sanity CMS, and TailwindCSS.",
-                        "Products are managed through Sanity, and the UI is built with reusable components and a responsive layout.",
-                        "The project includes a working shopping cart and checkout flow, along with connected API routes and data handling.",
-                        "It was a good end-to-end build for practicing full-stack structure, CMS integration, and frontend organization."
+                        "A modern e-commerce site built with Next.js, TailwindCSS, and Sanity for product management.",
+                        "The store includes a working cart, checkout flow, and dynamic pages fully driven by Sanity content.",
+                        "I focused on making the UI clean and reusable, with smooth loading states and a responsive layout.",
+                        "This project gave me solid practice building a real end-to-end app with a CMS and custom API routes."
                     ]
                 },
                 {
@@ -272,10 +272,10 @@ const WORK_LOCATION = {
             ]
         },
 
-        // ▶ Project 2
+        // ▶ Project 2 — RAG Knowledge Base
         {
             id: 6,
-            name: "AI Resume Analyzer",
+            name: "AI RAG Knowledge Base",
             icon: "/images/folder.png",
             kind: "folder",
             position: "top-52 right-80",
@@ -283,40 +283,33 @@ const WORK_LOCATION = {
             children: [
                 {
                     id: 1,
-                    name: "AI Resume Analyzer.txt",
+                    name: "RAG Project.txt",
                     icon: "/images/txt.png",
                     kind: "file",
                     fileType: "txt",
                     position: "top-5 right-10",
                     description: [
-                        "A resume analysis tool built with Next.js and TailwindCSS.",
-                        "It processes text input and provides feedback using local scoring logic without relying on external APIs.",
-                        "The main focus was handling user input cleanly, running evaluations, and presenting results in a clear UI.",
-                        "The project helped me improve how I structure data flow, form handling, and small-scale logic inside a frontend tool."
+                        "A document-based assistant that lets you upload your own files and ask natural questions about them.",
+                        "It uses a simple retrieval pipeline I built with FastAPI, Python, and embeddings to get accurate, grounded answers.",
+                        "Instead of relying on random AI responses, it pulls real information from your data and formats the final answer cleanly.",
+                        "This project taught me a lot about chunking, vector search, prompt design, and building a practical API that feels consistent and fast."
                     ]
                 },
+
                 {
                     id: 2,
-                    name: "demo-video",
-                    icon: "/images/safari.png",
-                    kind: "file",
-                    fileType: "url",
-                    href: "https://youtu.be/iYOz165wGkQ?si=R1hs8Legl200m0Cl",
-                    position: "top-20 left-20"
-                },
-                {
-                    id: 4,
-                    name: "ai-resume-analyzer.png",
+                    name: "demo.mp4",
                     icon: "/images/image.png",
                     kind: "file",
-                    fileType: "img",
+                    fileType: "video",
                     position: "top-52 left-80",
-                    imageUrl: "/images/project-2.png"
+                    videoUrl: "/videos/RAG-demo.mp4"
                 }
             ]
         },
 
-        // ▶ Project 3
+
+        // ▶ Project 3 — ASL Sign Language
         {
             id: 7,
             name: "ASL Sign Language",
@@ -333,25 +326,27 @@ const WORK_LOCATION = {
                     fileType: "txt",
                     position: "top-5 left-10",
                     description: [
-                        "A real-time ASL recognition app built with Python, MediaPipe, PyTorch, and OpenCV.",
-                        "It tracks hand landmarks through the webcam and predicts letters A–Z, including motion-based gestures like J and Z.",
-                        "The model uses an LSTM-based approach for sequence gestures, with preprocessing to improve accuracy and stability.",
-                        "This project strengthened my understanding of computer vision, model training, and building interactive ML applications."
+                        "A real-time ASL recognition app made with Python, MediaPipe, and PyTorch.",
+                        "It captures hand landmarks through the webcam and predicts letters A–Z, including motion gestures like J and Z.",
+                        "I added preprocessing and a small sequence model to make the predictions more stable and accurate.",
+                        "This project helped me understand how to combine CV pipelines, model training, and live feedback into one app."
                     ]
                 },
                 {
                     id: 4,
-                    name: "asl-app.png",
+                    name: "demo.mp4",
                     icon: "/images/image.png",
                     kind: "file",
-                    fileType: "img",
+                    fileType: "video",
                     position: "top-52 right-80",
-                    imageUrl: "/images/project-3.png"
+                    // imageUrl: "/images/project-3.png"
+                    videoUrl: "/videos/ASL-demo.mp4"
                 }
             ]
         }
     ]
 }
+
 
 const ABOUT_LOCATION = {
     id: 2,
@@ -471,6 +466,7 @@ const WINDOW_CONFIG = {
     terminal: {isOpen: false, zIndex: INITIAL_Z_INDEX, data: null},
     txtfile: {isOpen: false, zIndex: INITIAL_Z_INDEX, data: null},
     imgfile: {isOpen: false, zIndex: INITIAL_Z_INDEX, data: null},
+    videofile: {isOpen: false, zIndex: INITIAL_Z_INDEX, data: null},
 };
 
 export {INITIAL_Z_INDEX, WINDOW_CONFIG};
