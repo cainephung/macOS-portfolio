@@ -44,7 +44,7 @@ html {
 
   nav {
     position: relative;
-    z-index: 99999;
+    z-index: 50;
     @apply flex justify-between items-center bg-white/50 backdrop-blur-3xl p-2 px-5 select-none;
 
     nav > div:first-child {
