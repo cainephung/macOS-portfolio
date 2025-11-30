@@ -10,13 +10,13 @@ const Contact = () => {
         <WindowControls target="contact" />
         <h2>Contact Me</h2>
       </div>
-      <div className="p-5 space-y-5">
+      <div className="content p-5 space-y-5">
         <img
           src="/images/caine.jpeg"
           alt="Caine"
           className="w-20 rounded-full"
         />
-        <p className=" text-gray-300 leading-relaxed">
+        <p className=" content leading-relaxed">
           I’m Caine, a developer who likes building clean, straightforward
           applications and understanding how things work behind the scenes.
           <br />
