@@ -16,6 +16,19 @@ body {
 html {
   transition: background 0.2s linear, color 0.2s linear;
 }
+/* Fix for GSAP + mobile tap behavior */
+html,
+body {
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+/* Make close button receive tap first */
+#window-controls .close {
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+  -webkit-user-select: none;
+}
 
 @theme {
   --font-georama: "Georama", sans-serif;
@@ -857,16 +870,6 @@ html {
       top: 12% !important;
       transform: translateX(-50%) !important;
       border-radius: 0.75rem !important;
-    }
-  }
-  /* iOS Safari fix for touch events + 100vh */
-  @supports (-webkit-touch-callout: none) {
-    html,
-    body {
-      position: fixed;
-      overflow: hidden;
-      width: 100%;
-      height: 100%;
     }
   }
 

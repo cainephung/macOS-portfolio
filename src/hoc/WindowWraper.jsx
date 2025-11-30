@@ -10,7 +10,9 @@ export const WindowWrapper = (Component, windowKey) => {
     const { isOpen, zIndex } = windows[windowKey];
     const ref = useRef(null);
 
-    // ===== OPEN ANIMATION =====
+    // --------------------------
+    // OPEN ANIMATION
+    // --------------------------
     useGSAP(() => {
       const el = ref.current;
       if (!el || !isOpen) return;
@@ -20,44 +22,62 @@ export const WindowWrapper = (Component, windowKey) => {
 
       gsap.fromTo(
         el,
-        { scale: 0.8, opacity: 0, y: 40 },
+        { scale: 0.85, opacity: 0, y: 40 },
         {
           scale: 1,
           opacity: 1,
           y: 0,
-          duration: 0.4,
+          duration: 0.35,
           ease: "power3.out",
         }
       );
     }, [isOpen]);
 
-    // ===== DRAGGABLE (mobile-safe) =====
+    // --------------------------
+    // DRAGGABLE (mobile-safe)
+    // --------------------------
     useGSAP(() => {
       const el = ref.current;
       if (!el) return;
 
-      // drag ONLY the header
       const header = el.querySelector("#window-header");
 
       const [instance] = Draggable.create(el, {
         type: "x,y",
-        trigger: header,
-        edgeResistance: 0.15,
+        trigger: header, // drag ONLY header
+        edgeResistance: 0.2,
         inertia: true,
-        allowNativeTouchScrolling: false, // important for iOS
-        touch: true, // allow touch dragging
-        onPress: () => focusWindow(windowKey),
+        allowNativeTouchScrolling: true,
+        touch: true,
+        dragResistance: 0.25,
+
+        // 🔥 FIX: Taps DO NOT become drags
+        minimumMovement: 6,
+
+        onPress: (e) => {
+          // 🔥 FIX: If click hits close/min/max — DO NOT DRAG
+          if (e.target.closest("#window-controls")) return;
+          focusWindow(windowKey);
+        },
       });
 
       return () => instance.kill();
     }, []);
 
-    // ===== SHOW/HIDE =====
+    // --------------------------
+    // SHOW / HIDE WINDOW
+    // --------------------------
     useLayoutEffect(() => {
       const el = ref.current;
       if (!el) return;
-      el.style.display = isOpen ? "block" : "none";
-      el.style.pointerEvents = isOpen ? "auto" : "none";
+
+      if (isOpen) {
+        el.style.display = "block";
+        el.style.pointerEvents = "auto";
+      } else {
+        el.style.display = "none";
+        el.style.pointerEvents = "none";
+      }
     }, [isOpen]);
 
     return (
@@ -69,10 +89,11 @@ export const WindowWrapper = (Component, windowKey) => {
           absolute
           pointer-events-auto
           bg-white dark:bg-[#1e1e1e]
-          rounded-xl shadow-2xl
+          rounded-xl shadow-2xl overflow-hidden
           max-w-[90vw] max-h-[90vh]
           w-[650px] h-auto
           overflow-y-auto
+          will-change-transform
         "
       >
         <Component {...props} />
