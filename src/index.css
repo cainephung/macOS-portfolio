@@ -496,6 +496,29 @@ html {
       height: 2rem;
     }
   }
+  @media (max-width: 640px) {
+    /* Bigger tap area on phones only */
+    #window-controls .close.mobile-tap {
+      width: 22px !important;
+      height: 22px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Make sr-only exist only on mobile */
+    .mobile-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  }
 
   #txtfile {
     @apply w-md absolute top-36 right-32 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
