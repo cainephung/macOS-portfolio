@@ -824,6 +824,19 @@ html {
       /* transform: none !important; */
     }
   }
+  /* FIX MOBILE TOUCH ISSUE */
+  @media (max-width: 768px) {
+    html,
+    body {
+      overflow: visible !important;
+      height: auto !important;
+    }
+
+    main {
+      overflow: visible !important;
+      height: auto !important;
+    }
+  }
 
   /* ------------------ TABLETS (≥768px) ------------------ */
   @media (min-width: 768px) and (max-width: 1023px) {
