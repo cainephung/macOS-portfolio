@@ -10,9 +10,9 @@ export const WindowWrapper = (Component, windowKey) => {
     const { isOpen, zIndex } = windows[windowKey];
     const ref = useRef(null);
 
-    // --------------------------
+    // ==========================================================
     // OPEN ANIMATION
-    // --------------------------
+    // ==========================================================
     useGSAP(() => {
       const el = ref.current;
       if (!el || !isOpen) return;
@@ -33,9 +33,9 @@ export const WindowWrapper = (Component, windowKey) => {
       );
     }, [isOpen]);
 
-    // --------------------------
-    // DRAGGABLE (mobile-safe)
-    // --------------------------
+    // ==========================================================
+    // DRAGGABLE — MOBILE SAFE, HEADER ONLY
+    // ==========================================================
     useGSAP(() => {
       const el = ref.current;
       if (!el) return;
@@ -44,18 +44,19 @@ export const WindowWrapper = (Component, windowKey) => {
 
       const [instance] = Draggable.create(el, {
         type: "x,y",
-        trigger: header, // drag ONLY header
+        trigger: header, // Only drag from header (Fixes mobile taps)
         edgeResistance: 0.2,
         inertia: true,
-        allowNativeTouchScrolling: true,
+
+        // 🔥 CRITICAL — REQUIRED FOR MOBILE
+        allowNativeTouchScrolling: false,
         touch: true,
+
+        minimumMovement: 6, // Distinguish taps vs drags
         dragResistance: 0.25,
 
-        // 🔥 FIX: Taps DO NOT become drags
-        minimumMovement: 6,
-
         onPress: (e) => {
-          // 🔥 FIX: If click hits close/min/max — DO NOT DRAG
+          // 🔥 FIX: Buttons WON'T DRAG the window
           if (e.target.closest("#window-controls")) return;
           focusWindow(windowKey);
         },
@@ -64,9 +65,9 @@ export const WindowWrapper = (Component, windowKey) => {
       return () => instance.kill();
     }, []);
 
-    // --------------------------
+    // ==========================================================
     // SHOW / HIDE WINDOW
-    // --------------------------
+    // ==========================================================
     useLayoutEffect(() => {
       const el = ref.current;
       if (!el) return;
@@ -80,6 +81,9 @@ export const WindowWrapper = (Component, windowKey) => {
       }
     }, [isOpen]);
 
+    // ==========================================================
+    // WINDOW WRAPPER
+    // ==========================================================
     return (
       <section
         id={windowKey}
@@ -89,9 +93,13 @@ export const WindowWrapper = (Component, windowKey) => {
           absolute
           pointer-events-auto
           bg-white dark:bg-[#1e1e1e]
-          rounded-xl shadow-2xl overflow-hidden
-          max-w-[90vw] max-h-[90vh]
-          w-[650px] h-auto
+          rounded-xl
+          shadow-2xl
+          overflow-hidden
+          max-w-[90vw]
+          max-h-[90vh]
+          w-[650px]
+          h-auto
           overflow-y-auto
           will-change-transform
         "
