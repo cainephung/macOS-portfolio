@@ -18,7 +18,7 @@ export const WindowControls = ({ target }) => {
 
       {/* MINIMIZE */}
       <div
-        className="minimize"
+        className="minimize disabled"
         onClick={(e) => {
           e.stopPropagation();
         }}
@@ -26,7 +26,7 @@ export const WindowControls = ({ target }) => {
 
       {/* MAXIMIZE */}
       <div
-        className="maximize"
+        className="maximize disabled"
         onClick={(e) => {
           e.stopPropagation();
         }}
