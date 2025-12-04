@@ -34,7 +34,7 @@ export const WindowWrapper = (Component, windowKey) => {
     }, [isOpen]);
 
     // ==========================================================
-    // DRAGGABLE — MOBILE SAFE, HEADER ONLY
+    // DRAGGABLE — FIXED FOR MOBILE
     // ==========================================================
     useGSAP(() => {
       const el = ref.current;
@@ -44,20 +44,26 @@ export const WindowWrapper = (Component, windowKey) => {
 
       const [instance] = Draggable.create(el, {
         type: "x,y",
-        trigger: header, // Only drag from header (Fixes mobile taps)
+        trigger: header,
         edgeResistance: 0.2,
         inertia: true,
 
-        // 🔥 CRITICAL — REQUIRED FOR MOBILE
+        // ★ MOBILE TAPS SAFE
         allowNativeTouchScrolling: false,
+        dragClickables: true,
         touch: true,
+        minimumMovement: 6,
 
-        minimumMovement: 6, // Distinguish taps vs drags
-        dragResistance: 0.25,
+        onPress: function (e) {
+          // ★ DO NOT DRAG WHEN TAPPING BUTTONS
+          if (
+            e.target.closest("#window-controls") ||
+            e.target.closest(".mobile-nav-btn")
+          ) {
+            this.endDrag(); // cancel drag so click works
+            return;
+          }
 
-        onPress: (e) => {
-          // 🔥 FIX: Buttons WON'T DRAG the window
-          if (e.target.closest("#window-controls")) return;
           focusWindow(windowKey);
         },
       });
@@ -81,9 +87,6 @@ export const WindowWrapper = (Component, windowKey) => {
       }
     }, [isOpen]);
 
-    // ==========================================================
-    // WINDOW WRAPPER
-    // ==========================================================
     return (
       <section
         id={windowKey}

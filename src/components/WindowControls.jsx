@@ -10,7 +10,7 @@ export const WindowControls = ({ target }) => {
       <div
         className="close"
         onClick={(e) => {
-          e.stopPropagation(); // 🔥 FIX: prevents drag stealing the tap
+          e.stopPropagation();
           closeWindow(target);
         }}
         style={{ WebkitTapHighlightColor: "transparent" }}
