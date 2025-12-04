@@ -50,17 +50,20 @@ const Finder = () => {
 
   return (
     <>
-      {/* HEADER */}
+      {/* ================================
+          WINDOW HEADER
+        ================================= */}
       <div id="window-header" className="flex items-center">
         <WindowControls target="finder" />
 
-        {/* MOBILE BACK / FORWARD */}
+        {/* MOBILE-ONLY BACK / FORWARD */}
         <div className="flex gap-2 ml-3 sm:hidden">
           <button
+            type="button"
             onClick={goBack}
             disabled={history.length === 0}
             className={clsx(
-              "mobile-nav-btn px-2 py-1 rounded text-lg transition",
+              "px-2 py-1 rounded text-lg transition",
               history.length === 0
                 ? "opacity-30"
                 : "opacity-80 hover:bg-gray-200 active:scale-95"
@@ -70,10 +73,11 @@ const Finder = () => {
           </button>
 
           <button
+            type="button"
             onClick={goForward}
             disabled={forwardStack.length === 0}
             className={clsx(
-              "mobile-nav-btn px-2 py-1 rounded text-lg transition",
+              "px-2 py-1 rounded text-lg transition",
               forwardStack.length === 0
                 ? "opacity-30"
                 : "opacity-80 hover:bg-gray-200 active:scale-95"
@@ -84,15 +88,17 @@ const Finder = () => {
         </div>
       </div>
 
-      {/* CONTENT AREA */}
+      {/* ================================
+          CONTENT AREA
+        ================================= */}
       <div className="bg-white flex h-full">
-        {/* SIDEBAR */}
+        {/* SIDEBAR (desktop only) */}
         <div className="sidebar sm:flex hidden flex-col">
           {renderList("Favorite", Object.values(locations))}
           {renderList("Work", locations.work.children)}
         </div>
 
-        {/* MAIN CONTENT */}
+        {/* MAIN CONTENT LIST */}
         <ul className="content">
           {activeLocation?.children?.map((item) => (
             <li key={item.id} onClick={() => openItem(item)}>

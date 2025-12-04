@@ -34,42 +34,36 @@ export const WindowWrapper = (Component, windowKey) => {
     }, [isOpen]);
 
     // ==========================================================
-    // DRAGGABLE — FIXED FOR MOBILE
+    // DRAGGABLE — DESKTOP ONLY
     // ==========================================================
     useGSAP(() => {
       const el = ref.current;
       if (!el) return;
 
-      const header = el.querySelector("#window-header");
+      if (typeof window !== "undefined" && window.innerWidth < 640) {
+        return;
+      }
 
-      const [instance] = Draggable.create(el, {
+      const header = el.querySelector("#window-header");
+      if (!header) return;
+
+      const draggable = Draggable.create(el, {
         type: "x,y",
         trigger: header,
         edgeResistance: 0.2,
         inertia: true,
+        dragResistance: 0.2,
 
-        // ★ MOBILE TAPS SAFE
-        allowNativeTouchScrolling: false,
-        dragClickables: true,
-        touch: true,
-        minimumMovement: 6,
-
-        onPress: function (e) {
-          // ★ DO NOT DRAG WHEN TAPPING BUTTONS
-          if (
-            e.target.closest("#window-controls") ||
-            e.target.closest(".mobile-nav-btn")
-          ) {
-            this.endDrag(); // cancel drag so click works
-            return;
-          }
-
+        onPress: () => {
+          // just bring to front on desktop
           focusWindow(windowKey);
         },
-      });
+      })[0];
 
-      return () => instance.kill();
-    }, []);
+      return () => {
+        draggable.kill();
+      };
+    }, [focusWindow, windowKey]);
 
     // ==========================================================
     // SHOW / HIDE WINDOW
@@ -87,6 +81,9 @@ export const WindowWrapper = (Component, windowKey) => {
       }
     }, [isOpen]);
 
+    // ==========================================================
+    // WINDOW WRAPPER
+    // ==========================================================
     return (
       <section
         id={windowKey}
